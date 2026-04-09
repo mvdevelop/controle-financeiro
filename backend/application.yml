@@ -1,0 +1,32 @@
+
+spring:
+  application:
+    name: backend-controle-financeiro
+  
+  data:
+    mongodb:
+      uri: mongodb+srv://${MONGODB_ATLAS_USERNAME}:${MONGODB_ATLAS_PASSWORD}@${MONGODB_ATLAS_CLUSTER}/${MONGODB_ATLAS_DATABASE}?retryWrites=true&w=majority
+      database: ${MONGODB_ATLAS_DATABASE}
+      connection-pool:
+        max-size: 10
+        min-size: 5
+        max-wait-time: 120000
+        max-connection-life-time: 0
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org.springframework.data.mongodb: INFO
+    com.financeiro: DEBUG
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+      
