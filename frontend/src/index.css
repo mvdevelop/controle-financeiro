@@ -1,53 +1,12 @@
 @import "tailwindcss";
 
 @theme {
-  /* Brand colors - Emerald + Deep Blue */
-  --color-brand-50: #ecfdf5;
-  --color-brand-100: #d1fae5;
-  --color-brand-200: #a7f3d0;
-  --color-brand-300: #6ee7b7;
-  --color-brand-400: #34d399;
   --color-brand-500: #10b981;
   --color-brand-600: #059669;
   --color-brand-700: #047857;
-  --color-brand-800: #065f46;
-  --color-brand-900: #064e3b;
-
-  /* Semantic colors */
-  --color-primary: #111111;
-  --color-primary-light: #333333;
-  --color-secondary: #1e40af;
-  --color-secondary-light: #3b82f6;
-  --color-accent: #10b981;
-  --color-accent-light: #34d399;
-  --color-success: #10b981;
-  --color-danger: #ef4444;
-  --color-warning: #f59e0b;
-  --color-info: #3b82f6;
-
-  /* Surfaces */
-  --color-surface: #ffffff;
-  --color-surface-dark: #1e293b;
-  --color-background: #ffffff;
-  --color-background-dark: #0f172a;
-  --color-muted: #94a3b8;
-  --color-border: #e2e8f0;
-  --color-border-dark: #334155;
-
-  /* Glass */
-  --color-glass: rgba(255, 255, 255, 0.72);
-  --color-glass-dark: rgba(30, 41, 59, 0.72);
-  --color-glass-border: rgba(255, 255, 255, 0.18);
-  --color-glass-border-dark: rgba(255, 255, 255, 0.08);
-
-  /* Font */
   --font-sans: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
-
-  /* Animations */
-  --animate-fade-in: fade-in 0.4s ease-out;
-  --animate-slide-up: slide-up 0.4s ease-out;
-  --animate-scale-in: scale-in 0.3s ease-out;
-  --animate-pulse-slow: pulse 3s infinite;
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
 }
 
 @keyframes fade-in {
@@ -56,117 +15,24 @@
 }
 
 @keyframes slide-up {
-  from { opacity: 0; transform: translateY(20px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes scale-in {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.5; }
-}
-
-@utility glass {
-  background: var(--color-glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--color-glass-border);
-}
-
-.dark .glass {
-  background: var(--color-glass-dark);
-  border-color: var(--color-glass-border-dark);
-}
-
 @utility bg-gradient-brand {
-  background: linear-gradient(135deg, var(--color-brand-500) 0%, var(--color-brand-700) 100%);
-}
-
-@utility bg-gradient-card {
-  background: linear-gradient(135deg, var(--color-brand-500) 0%, var(--color-secondary) 100%);
-}
-
-@utility text-gradient {
-  background: linear-gradient(135deg, var(--color-brand-500), var(--color-secondary-light));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
 }
 
 @utility transition-smooth {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
 }
 
-/* Base styles - Light mode (default) */
 body {
   font-family: var(--font-sans);
-  background-color: #ffffff;
-  color: #111111;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-.dark body {
-  background-color: var(--color-background-dark);
-  color: #e2e8f0;
-}
-
-.dark body {
-  background-color: var(--color-background-dark);
-  color: #e2e8f0;
-}
-
-/* Dark mode styles */
-.dark .bg-surface {
-  background-color: var(--color-surface-dark);
-}
-
-.dark .text-muted {
-  color: #64748b;
-}
-
-.dark .border-color {
-  border-color: var(--color-border-dark);
-}
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
-}
-
 .dark ::-webkit-scrollbar-thumb {
   background: #475569;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
-}
-
-/* Accessibility */
-body.alto-contraste {
-  background: #000 !important;
-  color: #fff !important;
-}
-
-body.alto-contraste .glass {
-  background: #111 !important;
-  border: 2px solid #fff !important;
-}
-
-body.fonte-grande {
-  font-size: 1.2rem;
 }

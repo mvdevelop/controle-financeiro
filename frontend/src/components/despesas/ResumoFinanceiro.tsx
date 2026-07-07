@@ -34,13 +34,13 @@ const ResumoFinanceiro: React.FC = () => {
         gasto: value,
     }));
 
-    const CORES = ['#667eea', '#764ba2', '#4caf50', '#ff9800', '#f44336', '#2196f3', '#9c27b0'];
+    const CORES = ['#10b981', '#0d9488', '#14b8a6', '#059669', '#34d399', '#6ee7b7', '#047857'];
 
     return (
         <div className="bg-white rounded-xl shadow-md p-6">
             <h2 className="text-2xl font-bold text-primary mb-6">📊 Resumo Financeiro</h2>
 
-            <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-xl p-6 mb-6 text-center">
+            <div className="bg-gradient-card text-white rounded-xl p-6 mb-6 text-center">
                 <h3 className="text-lg mb-2">💰 Total Geral</h3>
                 <div className="text-4xl font-bold">{formatarMoeda(resumo.totalGeral)}</div>
                 <div className="text-sm opacity-90 mt-2">{resumo.totalDespesas} despesa(s) registrada(s)</div>
@@ -78,7 +78,7 @@ const ResumoFinanceiro: React.FC = () => {
                             <YAxis tickFormatter={(value) => formatarMoeda(value)} />
                             <Tooltip formatter={(value) => formatarMoeda(value as number)} />
                             <Legend />
-                            <Bar dataKey="gasto" fill="#667eea" />
+                            <Bar dataKey="gasto" fill="#10b981" />
                         </BarChart>
                     </ResponsiveContainer>
                 </div>

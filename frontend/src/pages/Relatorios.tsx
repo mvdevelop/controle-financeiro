@@ -69,7 +69,7 @@ const Relatorios: React.FC = () => {
                                 type="date"
                                 value={dataInicio}
                                 onChange={(e) => setDataInicio(e.target.value)}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500"
                             />
                         </div>
                         <div>
@@ -78,7 +78,7 @@ const Relatorios: React.FC = () => {
                                 type="date"
                                 value={dataFim}
                                 onChange={(e) => setDataFim(e.target.value)}
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-500"
                             />
                         </div>
                     </div>
@@ -87,7 +87,7 @@ const Relatorios: React.FC = () => {
                         <button
                             onClick={gerarRelatorio}
                             disabled={loading}
-                            className="flex-1 bg-gradient-to-r from-primary to-secondary text-white py-2 rounded-lg font-semibold hover:opacity-90 transition-smooth"
+                            className="flex-1 bg-gradient-brand text-white py-2 rounded-lg font-semibold hover:opacity-90 transition-smooth"
                         >
                             {loading ? 'Gerando...' : 'Gerar Relatório'}
                         </button>
@@ -107,7 +107,7 @@ const Relatorios: React.FC = () => {
                         </h2>
                         
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-gradient-to-r from-primary to-secondary text-white rounded-xl p-6 text-center">
+                            <div className="bg-gradient-card text-white rounded-xl p-6 text-center">
                                 <h3 className="text-lg mb-2">Total Geral</h3>
                                 <p className="text-3xl font-bold">{formatarMoeda(relatorio.totalGeral)}</p>
                             </div>

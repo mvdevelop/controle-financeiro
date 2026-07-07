@@ -9,16 +9,13 @@ interface CardProps {
 
 export const Card: React.FC<CardProps> = ({ children, className = '', variant = 'default', onClick }) => {
     const variants = {
-        default: 'bg-surface dark:bg-surface-dark border border-border dark:border-border-dark shadow-sm',
-        gradient: 'bg-gradient-card text-white shadow-lg',
-        glass: 'glass shadow-lg',
+        default: 'bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-700 shadow-sm',
+        gradient: 'bg-gradient-brand text-white shadow-md',
+        glass: 'bg-white/70 dark:bg-gray-800/70 backdrop-blur-md border border-gray-200 dark:border-gray-700 shadow-md',
     };
 
     return (
-        <div
-            className={`rounded-2xl p-6 transition-smooth ${variants[variant]} ${onClick ? 'cursor-pointer hover:shadow-xl hover:-translate-y-0.5' : ''} ${className}`}
-            onClick={onClick}
-        >
+        <div className={`rounded-2xl p-6 transition-smooth ${variants[variant]} ${onClick ? 'cursor-pointer hover:shadow-lg' : ''} ${className}`} onClick={onClick}>
             {children}
         </div>
     );
@@ -33,5 +30,5 @@ export const CardBody: React.FC<{ children: React.ReactNode; className?: string 
 );
 
 export const CardFooter: React.FC<{ children: React.ReactNode; className?: string }> = ({ children, className = '' }) => (
-    <div className={`mt-4 pt-4 border-t border-border dark:border-border-dark ${className}`}>{children}</div>
+    <div className={`mt-4 pt-4 border-t border-gray-200 dark:border-gray-700 ${className}`}>{children}</div>
 );

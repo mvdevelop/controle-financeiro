@@ -64,7 +64,7 @@ const MenuAcessibilidade: React.FC = () => {
             <div className="fixed bottom-6 right-6 z-50">
                 <button
                     onClick={() => setMenuAberto(!menuAberto)}
-                    className="bg-primary text-white p-3 rounded-full shadow-lg hover:opacity-90 transition-smooth"
+                    className="bg-brand-500 text-white p-3 rounded-full shadow-lg hover:opacity-90 transition-smooth"
                     title="Menu de acessibilidade (Ctrl+F10)"
                 >
                     ♿ Acessibilidade
@@ -73,7 +73,7 @@ const MenuAcessibilidade: React.FC = () => {
 
             {menuAberto && (
                 <div className="fixed bottom-24 right-6 bg-white rounded-xl shadow-2xl p-4 z-50 min-w-[220px] animate-fade-in">
-                    <h3 className="font-bold text-primary mb-3">Acessibilidade</h3>
+                    <h3 className="font-bold text-primary dark:text-white mb-3">Acessibilidade</h3>
                     <button
                         onClick={toggleAltoContraste}
                         className="w-full text-left px-3 py-2 rounded-lg hover:bg-gray-100 transition-smooth mb-1"
