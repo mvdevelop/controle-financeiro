@@ -1,23 +1,27 @@
 package com.financeiro.model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "categorias")
+@Entity
+@Table(name = "categorias")
 public class Categoria {
-    
+
     @Id
-    private String id;
-    
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, unique = true, length = 100)
     private String nome;
-    
+
+    @Column(length = 255)
     private String descricao;
-    
-    private Boolean ativo;
+
+    @Column(nullable = false)
+    private Boolean ativo = true;
 }

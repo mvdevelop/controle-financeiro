@@ -1,12 +1,9 @@
 package com.financeiro.model;
 
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -14,32 +11,32 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "despesas")
+@Entity
+@Table(name = "despesas")
 public class Despesa {
-    
+
     @Id
-    private String id;
-    
-    @Indexed
-    @Field("familia")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(nullable = false, length = 50)
     private String familia;
-    
-    @Indexed
-    @Field("categoria")
+
+    @Column(nullable = false, length = 100)
     private String categoria;
-    
-    @Field("valor")
+
+    @Column(nullable = false)
     private Double valor;
-    
-    @Field("data")
+
+    @Column(nullable = false)
     private LocalDate data;
-    
-    @Field("descricao")
+
+    @Column(length = 200)
     private String descricao;
-    
-    @Field("data_criacao")
+
+    @Column(name = "data_criacao", nullable = false)
     private LocalDateTime dataCriacao;
-    
-    @Field("data_atualizacao")
+
+    @Column(name = "data_atualizacao", nullable = false)
     private LocalDateTime dataAtualizacao;
 }

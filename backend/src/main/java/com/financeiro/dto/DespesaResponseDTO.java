@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DespesaResponseDTO {
-    private String id;
+    private Long id;
     private String familia;
     private String categoria;
     private Double valor;
