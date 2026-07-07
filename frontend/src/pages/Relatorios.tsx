@@ -111,14 +111,14 @@ const Relatorios: React.FC = () => {
                                 <h3 className="text-lg mb-2">Total Geral</h3>
                                 <p className="text-3xl font-bold">{formatarMoeda(relatorio.totalGeral)}</p>
                             </div>
-                            <div className="bg-gray-50 rounded-xl p-6 text-center">
+                            <div className="bg-white dark:bg-gray-800/50 rounded-xl p-6 text-center">
                                 <h3 className="text-lg mb-2 text-primary">Total de Despesas</h3>
                                 <p className="text-3xl font-bold text-primary">{relatorio.totalDespesas}</p>
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div className="bg-gray-50 rounded-xl p-4">
+                            <div className="bg-white dark:bg-gray-800/50 rounded-xl p-4">
                                 <h3 className="font-semibold text-primary mb-3">Por Família</h3>
                                 <ul className="space-y-2">
                                     {Object.entries(relatorio.totalPorFamilia).map(([familia, total]) => (
@@ -129,7 +129,7 @@ const Relatorios: React.FC = () => {
                                     ))}
                                 </ul>
                             </div>
-                            <div className="bg-gray-50 rounded-xl p-4">
+                            <div className="bg-white dark:bg-gray-800/50 rounded-xl p-4">
                                 <h3 className="font-semibold text-primary mb-3">Por Categoria</h3>
                                 <ul className="space-y-2">
                                     {Object.entries(relatorio.totalPorCategoria).map(([categoria, total]) => (

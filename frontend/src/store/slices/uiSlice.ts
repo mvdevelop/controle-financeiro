@@ -9,9 +9,16 @@ interface UiState {
     modalContent: React.ReactNode | null;
 }
 
+function getInitialTheme(): 'light' | 'dark' {
+    const stored = localStorage.getItem('theme') as 'light' | 'dark' | null;
+    if (stored) return stored;
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+    return 'light';
+}
+
 const initialState: UiState = {
     sidebarOpen: true,
-    theme: (localStorage.getItem('theme') as 'light' | 'dark') || 'light',
+    theme: getInitialTheme(),
     loading: false,
     modalOpen: false,
     modalContent: null,

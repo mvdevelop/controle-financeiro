@@ -9,7 +9,7 @@ import { Badge } from '../components/ui/Badge';
 const Configuracoes: React.FC = () => {
     const dispatch = useAppDispatch();
     const { theme } = useAppSelector(state => state.ui);
-    const { userName, userEmail } = useAppSelector(state => state.auth);
+    const { user } = useAppSelector(state => state.auth);
 
     return (
         <Layout>
@@ -58,21 +58,21 @@ const Configuracoes: React.FC = () => {
                         <div className="space-y-4">
                             <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
                                 <div className="w-10 h-10 rounded-full bg-gradient-brand flex items-center justify-center text-white font-bold text-sm">
-                                    {userName?.charAt(0) || 'U'}
+                                    {user?.name?.charAt(0) || 'U'}
                                 </div>
                                 <div>
                                     <div className="flex items-center gap-2">
                                         <User className="w-4 h-4 text-muted" />
                                         <label className="text-sm font-medium text-muted">Usuário</label>
                                     </div>
-                                    <p className="text-primary dark:text-white font-medium">{userName || 'Usuário'}</p>
+                                    <p className="text-primary dark:text-white font-medium">{user?.name || 'Usuário'}</p>
                                 </div>
                             </div>
                             <div className="flex items-center gap-3 p-3 bg-gray-50 dark:bg-gray-800/50 rounded-xl">
                                 <Mail className="w-5 h-5 text-muted ml-3" />
                                 <div>
                                     <label className="text-sm font-medium text-muted">Email</label>
-                                    <p className="text-primary dark:text-white font-medium">{userEmail}</p>
+                                    <p className="text-primary dark:text-white font-medium">{user?.email}</p>
                                 </div>
                             </div>
                         </div>

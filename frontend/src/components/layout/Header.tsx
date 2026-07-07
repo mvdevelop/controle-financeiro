@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Menu, Bell, Sun, Moon, LogOut } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { toggleSidebar, setTheme } from '../../store/slices/uiSlice';
@@ -6,8 +7,14 @@ import { logout } from '../../store/slices/authSlice';
 
 const Header: React.FC = () => {
     const dispatch = useAppDispatch();
+    const navigate = useNavigate();
     const { sidebarOpen, theme } = useAppSelector(state => state.ui);
-    const { userName } = useAppSelector(state => state.auth);
+    const { user } = useAppSelector(state => state.auth);
+
+    const handleLogout = () => {
+        dispatch(logout());
+        navigate('/sign-in');
+    };
 
     return (
         <header className="fixed top-0 left-0 right-0 z-50">
@@ -46,10 +53,10 @@ const Header: React.FC = () => {
                             <span className="absolute top-1 right-1 w-2 h-2 bg-danger rounded-full" />
                         </button>
 
-                        <span className="text-sm text-white/80 hidden md:inline ml-2 font-medium">{userName || 'Usuário'}</span>
+                        <span className="text-sm text-white/80 hidden md:inline ml-2 font-medium">{user?.name || 'Usuário'}</span>
 
                         <button
-                            onClick={() => dispatch(logout())}
+                            onClick={handleLogout}
                             className="p-2 rounded-xl hover:bg-white/20 transition-smooth text-white/80 hover:text-white ml-1"
                             title="Sair"
                         >

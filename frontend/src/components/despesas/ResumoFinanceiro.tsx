@@ -47,7 +47,7 @@ const ResumoFinanceiro: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-                <div className="bg-gray-50 rounded-xl p-4">
+                <div className="bg-white dark:bg-gray-800/50 rounded-xl p-4">
                     <h3 className="text-lg font-semibold text-primary mb-4 text-center">📂 Gastos por Categoria</h3>
                     <ResponsiveContainer width="100%" height={300}>
                         <PieChart>
@@ -70,7 +70,7 @@ const ResumoFinanceiro: React.FC = () => {
                     </ResponsiveContainer>
                 </div>
 
-                <div className="bg-gray-50 rounded-xl p-4">
+                <div className="bg-white dark:bg-gray-800/50 rounded-xl p-4">
                     <h3 className="text-lg font-semibold text-primary mb-4 text-center">👨‍👩‍👧‍👦 Gastos por Família</h3>
                     <ResponsiveContainer width="100%" height={300}>
                         <BarChart data={dadosBarras}>
@@ -85,7 +85,7 @@ const ResumoFinanceiro: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="bg-gray-50 rounded-xl p-4">
+                <div className="bg-white dark:bg-gray-800/50 rounded-xl p-4">
                     <h4 className="font-semibold text-primary mb-3">Por Família</h4>
                     <ul className="space-y-2">
                         {Object.entries(resumo.totalPorFamilia).map(([familia, total]) => (
@@ -96,7 +96,7 @@ const ResumoFinanceiro: React.FC = () => {
                         ))}
                     </ul>
                 </div>
-                <div className="bg-gray-50 rounded-xl p-4">
+                <div className="bg-white dark:bg-gray-800/50 rounded-xl p-4">
                     <h4 className="font-semibold text-primary mb-3">Por Categoria</h4>
                     <ul className="space-y-2">
                         {Object.entries(resumo.totalPorCategoria).map(([categoria, total]) => (

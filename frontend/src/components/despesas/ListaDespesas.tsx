@@ -98,7 +98,7 @@ const ListaDespesas: React.FC = () => {
             ) : (
                 <div className="overflow-x-auto">
                     <table className="w-full">
-                        <thead className="bg-gray-50">
+                        <thead className="bg-white dark:bg-gray-800/50">
                             <tr>
                                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-600">Família</th>
                                 <th className="px-4 py-3 text-left text-sm font-semibold text-gray-600">Categoria</th>
