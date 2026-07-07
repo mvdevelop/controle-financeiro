@@ -1,14 +1,12 @@
-
 import React from 'react';
 import Layout from '../components/layout/Layout';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
 import { setTheme } from '../store/slices/uiSlice';
-import { useAuth } from '@clerk/clerk-react';
 
 const Configuracoes: React.FC = () => {
     const dispatch = useAppDispatch();
     const { theme } = useAppSelector(state => state.ui);
-    const { user } = useAuth();
+    const { userName, userEmail } = useAppSelector(state => state.auth);
 
     return (
         <Layout>
@@ -47,11 +45,11 @@ const Configuracoes: React.FC = () => {
                         <div className="space-y-3">
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Usuário</label>
-                                <p className="mt-1 text-gray-900">{user?.fullName || user?.username}</p>
+                                <p className="mt-1 text-gray-900">{userName}</p>
                             </div>
                             <div>
                                 <label className="block text-sm font-medium text-gray-700">Email</label>
-                                <p className="mt-1 text-gray-900">{user?.primaryEmailAddress?.emailAddress}</p>
+                                <p className="mt-1 text-gray-900">{userEmail}</p>
                             </div>
                         </div>
                     </div>

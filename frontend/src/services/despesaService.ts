@@ -1,15 +1,13 @@
-
 import api from './api';
 import { Despesa, ResumoDTO, RelatorioDTO } from '../types/Despesa';
 
 export const despesaService = {
-    // Despesas
     listarTodas: async (): Promise<Despesa[]> => {
         const response = await api.get('/despesas');
         return response.data;
     },
 
-    buscarPorId: async (id: string): Promise<Despesa> => {
+    buscarPorId: async (id: number): Promise<Despesa> => {
         const response = await api.get(`/despesas/${id}`);
         return response.data;
     },
@@ -29,16 +27,15 @@ export const despesaService = {
         return response.data;
     },
 
-    atualizar: async (id: string, despesa: Partial<Despesa>): Promise<Despesa> => {
+    atualizar: async (id: number, despesa: Partial<Despesa>): Promise<Despesa> => {
         const response = await api.put(`/despesas/${id}`, despesa);
         return response.data;
     },
 
-    deletar: async (id: string): Promise<void> => {
+    deletar: async (id: number): Promise<void> => {
         await api.delete(`/despesas/${id}`);
     },
 
-    // Resumos
     getTotalPorFamilia: async (): Promise<Record<string, number>> => {
         const response = await api.get('/despesas/resumo/familias');
         return response.data;
@@ -70,7 +67,6 @@ export const despesaService = {
         };
     },
 
-    // Relatórios
     gerarRelatorio: async (inicio: string, fim: string): Promise<RelatorioDTO> => {
         const response = await api.get(`/relatorios/periodo?inicio=${inicio}&fim=${fim}`);
         return response.data;

@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { Navigate } from 'react-router-dom';
-import { useAuth } from '@clerk/clerk-react';
+import { useAppSelector } from '../../store/hooks';
 import LoadingSpinner from './LoadingSpinner';
 
 interface PrivateRouteProps {
@@ -9,14 +8,10 @@ interface PrivateRouteProps {
 }
 
 const PrivateRoute: React.FC<PrivateRouteProps> = ({ children }) => {
-    const { isSignedIn, isLoaded } = useAuth();
+    const { isAuthenticated } = useAppSelector(state => state.auth);
 
-    if (!isLoaded) {
-        return <LoadingSpinner />;
-    }
-
-    if (!isSignedIn) {
-        return <Navigate to="/sign-in" replace />;
+    if (!isAuthenticated) {
+        return <Navigate to="/dashboard" replace />;
     }
 
     return <>{children}</>;

@@ -38,7 +38,7 @@ const ListaDespesas: React.FC = () => {
         return match;
     });
 
-    const handleDeletar = async (id: string) => {
+    const handleDeletar = async (id: number) => {
         if (window.confirm('Tem certeza que deseja excluir esta despesa?')) {
             setLoading(true);
             try {

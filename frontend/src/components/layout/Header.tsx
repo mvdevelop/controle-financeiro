@@ -1,13 +1,11 @@
-
 import React from 'react';
-import { useAuth, useUser } from '@clerk/clerk-react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { toggleSidebar } from '../../store/slices/uiSlice';
+import { logout } from '../../store/slices/authSlice';
 
 const Header: React.FC = () => {
-    const { signOut } = useAuth();
-    const { user } = useUser();
     const { sidebarOpen } = useAppSelector(state => state.ui);
+    const { userName } = useAppSelector(state => state.auth);
     const dispatch = useAppDispatch();
 
     return (
@@ -26,17 +24,13 @@ const Header: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-4">
-                    {user && (
-                        <>
-                            <span className="text-sm hidden md:inline">{user.fullName || user.username}</span>
-                            <button
-                                onClick={() => signOut()}
-                                className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-smooth"
-                            >
-                                Sair
-                            </button>
-                        </>
-                    )}
+                    <span className="text-sm hidden md:inline">{userName || 'Usuário'}</span>
+                    <button
+                        onClick={() => dispatch(logout())}
+                        className="bg-white/20 hover:bg-white/30 px-4 py-2 rounded-lg transition-smooth"
+                    >
+                        Sair
+                    </button>
                 </div>
             </div>
         </header>

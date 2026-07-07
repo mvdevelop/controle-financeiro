@@ -1,6 +1,5 @@
-
 export interface Despesa {
-    id?: string;
+    id?: number;
     familia: string;
     categoria: string;
     valor: number;
