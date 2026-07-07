@@ -3,6 +3,7 @@ package com.financeiro.service;
 import com.financeiro.dto.DespesaRequestDTO;
 import com.financeiro.dto.DespesaResponseDTO;
 import com.financeiro.dto.ResumoFamiliaDTO;
+import com.financeiro.model.Despesa;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -27,4 +28,6 @@ public interface DespesaService {
 
     Double getMediaGastosPorFamilia(String familia);
     Integer getQuantidadeDespesasPorCategoria(String categoria);
+
+    DespesaResponseDTO convertToResponseDTO(Despesa despesa);
 }

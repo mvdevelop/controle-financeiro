@@ -5,6 +5,9 @@ import { setUser } from './store/slices/authSlice';
 import { fetchDespesas, fetchResumo } from './store/slices/despesaSlice';
 import Dashboard from './pages/Dashboard';
 import Relatorios from './pages/Relatorios';
+import Orcamentos from './pages/Orcamentos';
+import Metas from './pages/Metas';
+import Recorrencias from './pages/Recorrencias';
 import Configuracoes from './pages/Configuracoes';
 import { setTheme } from './store/slices/uiSlice';
 
@@ -14,9 +17,9 @@ function App() {
 
     useEffect(() => {
         if (theme === 'dark') {
-            document.body.classList.add('dark-theme');
+            document.documentElement.classList.add('dark');
         } else {
-            document.body.classList.remove('dark-theme');
+            document.documentElement.classList.remove('dark');
         }
     }, [theme]);
 
@@ -37,7 +40,11 @@ function App() {
                 <Route path="/" element={<Navigate to="/dashboard" replace />} />
                 <Route path="/dashboard" element={<Dashboard />} />
                 <Route path="/relatorios" element={<Relatorios />} />
+                <Route path="/orcamentos" element={<Orcamentos />} />
+                <Route path="/metas" element={<Metas />} />
+                <Route path="/recorrencias" element={<Recorrencias />} />
                 <Route path="/configuracoes" element={<Configuracoes />} />
+                {/* <Route path="/recorrencias" element={<Recorrencias />} /> */}
             </Routes>
         </Router>
     );

@@ -106,58 +106,44 @@ public class DespesaServiceImpl implements DespesaService {
     @Override
     @Transactional(readOnly = true)
     public Map<String, Double> getTotalPorFamilia() {
-        List<Despesa> despesas = despesaRepository.findAll();
+        List<Object[]> result = despesaRepository.sumTotalPorFamilia();
         Map<String, Double> totalPorFamilia = new HashMap<>();
-
-        for (Despesa despesa : despesas) {
-            totalPorFamilia.merge(despesa.getFamilia(), despesa.getValor(), Double::sum);
+        for (Object[] row : result) {
+            totalPorFamilia.put((String) row[0], (Double) row[1]);
         }
-
         return totalPorFamilia;
     }
 
     @Override
     @Transactional(readOnly = true)
     public Map<String, Double> getTotalPorCategoria() {
-        List<Despesa> despesas = despesaRepository.findAll();
+        List<Object[]> result = despesaRepository.sumTotalPorCategoria();
         Map<String, Double> totalPorCategoria = new HashMap<>();
-
-        for (Despesa despesa : despesas) {
-            totalPorCategoria.merge(despesa.getCategoria(), despesa.getValor(), Double::sum);
+        for (Object[] row : result) {
+            totalPorCategoria.put((String) row[0], (Double) row[1]);
         }
-
         return totalPorCategoria;
     }
 
     @Override
     @Transactional(readOnly = true)
     public List<ResumoFamiliaDTO> getResumoCompletoPorFamilia() {
-        List<Despesa> despesas = despesaRepository.findAll();
-        Map<String, List<Despesa>> despesasPorFamilia = despesas.stream()
-                .collect(Collectors.groupingBy(Despesa::getFamilia));
-
-        return despesasPorFamilia.entrySet().stream()
-                .map(entry -> {
-                    String familia = entry.getKey();
-                    List<Despesa> despesasFamilia = entry.getValue();
-                    Double total = despesasFamilia.stream()
-                            .mapToDouble(Despesa::getValor)
-                            .sum();
-                    Integer quantidade = despesasFamilia.size();
-                    Double media = quantidade > 0 ? total / quantidade : 0.0;
-
-                    return new ResumoFamiliaDTO(familia, total, quantidade, media);
-                })
+        List<Object[]> result = despesaRepository.resumoCompletoPorFamilia();
+        return result.stream()
+                .map(row -> new ResumoFamiliaDTO(
+                        (String) row[0],
+                        ((Number) row[2]).doubleValue(),
+                        ((Number) row[1]).intValue(),
+                        ((Number) row[3]).doubleValue()
+                ))
                 .collect(Collectors.toList());
     }
 
     @Override
     @Transactional(readOnly = true)
     public Double getTotalGeral() {
-        return despesaRepository.findAll()
-                .stream()
-                .mapToDouble(Despesa::getValor)
-                .sum();
+        Double total = despesaRepository.sumTotalGeral();
+        return total != null ? total : 0.0;
     }
 
     @Override
@@ -179,6 +165,7 @@ public class DespesaServiceImpl implements DespesaService {
         return (int) despesaRepository.countByCategoria(categoria);
     }
 
+    @Override
     public DespesaResponseDTO convertToResponseDTO(Despesa despesa) {
         return new DespesaResponseDTO(
                 despesa.getId(),

@@ -4,6 +4,7 @@ import com.financeiro.dto.DespesaResponseDTO;
 import com.financeiro.dto.RelatorioDTO;
 import com.financeiro.model.Despesa;
 import com.financeiro.repository.DespesaRepository;
+import com.financeiro.service.DespesaService;
 import com.financeiro.service.RelatorioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 public class RelatorioServiceImpl implements RelatorioService {
 
     private final DespesaRepository despesaRepository;
-    private final DespesaServiceImpl despesaService;
+    private final DespesaService despesaService;
 
     @Override
     @Transactional(readOnly = true)

@@ -28,9 +28,9 @@ const uiSlice = createSlice({
             state.theme = action.payload;
             localStorage.setItem('theme', action.payload);
             if (action.payload === 'dark') {
-                document.body.classList.add('dark-theme');
+                document.documentElement.classList.add('dark');
             } else {
-                document.body.classList.remove('dark-theme');
+                document.documentElement.classList.remove('dark');
             }
         },
         setLoading: (state, action: PayloadAction<boolean>) => {
